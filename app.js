@@ -2,7 +2,7 @@ const Express = require('express');
 const app = Express();
 const cors = require("cors"); //for successfull connection to frontend
 app.use(cors({
-    origin:["http://192.168.1.65:5000"], 
+    origin:["https://visa-companion-frontend.onrender.com/"], 
     credentials: true, // Allows cookies to be sent
     // methods:["GET","POST","PUT","DELETE"],
 }));
@@ -34,6 +34,7 @@ app.use('/uploads', Express.static(path.join(__dirname, 'uploads')));
 app.use("/auth",authRoute)
 // app.use("/")
 app.use("/verified/",verifiedRoute,)
+
 
 app.listen(PORT, () => console.log('server is running on port 5000'));
 
