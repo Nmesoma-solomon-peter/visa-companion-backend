@@ -35,6 +35,10 @@ app.use("/auth",authRoute)
 // app.use("/")
 app.use("/verified/",verifiedRoute,)
 
+app.get("/tryit",(req,res)=>{
+    res.json({"message":"see me ooo"});
+})
+
 
 app.listen(PORT, () => console.log('server is running on port 5000'));
 
