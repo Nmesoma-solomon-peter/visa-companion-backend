@@ -68,7 +68,7 @@ module.exports.Login = async (req, res) => {
                 // });
                 res.cookie("token", generatedToken, {
                     withCredentials: true,
-                    httpOnly: true, // Prevents access to the cookie from JavaScript on the frontend
+                    httpOnly: false, // Prevents access to the cookie from JavaScript on the frontend
                     secure: true, // Ensures the cookie is only sent over HTTPS
                     sameSite: "none", // Allows cross-site requests
                     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
