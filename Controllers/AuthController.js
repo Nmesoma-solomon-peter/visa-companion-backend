@@ -60,8 +60,8 @@ module.exports.Login = async (req, res) => {
                     withCredentials: true,
                     httpOnly: false, // Prevents access to the cookie from JavaScript on the frontend
                     //secure: process.env.NODE_ENV === "production", // Ensures the cookie is only sent over HTTPS in production
-                    secure: Lat, // Ensures the cookie is only sent over HTTPS in production
-                    //sameSite: "Lax", // Ensures the cookie is sent only to the same site
+                    secure: True, // Ensures the cookie is only sent over HTTPS in production
+                    sameSite: none, // Ensures the cookie is sent only to the same site
                     // sameSite: "strict",
 
                     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
