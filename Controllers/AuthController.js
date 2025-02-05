@@ -73,12 +73,12 @@ module.exports.Login = async (req, res) => {
                     sameSite: "none", // Allows cross-site requests
                     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
                   });
-                res.status(201).json({ "message": "success" })
+                return res.status(201).json({ "message": "success" })
             } else {
-                res.json({ "message": "unsuccessful" });
+                return res.json({ "message": "unsuccessful" });
             }
         } else {
-            res.json({ "message": "unsuccessful" });
+            return res.json({ "message": "unsuccessful" });
         }
     } catch (error) {
         console.log(error);
