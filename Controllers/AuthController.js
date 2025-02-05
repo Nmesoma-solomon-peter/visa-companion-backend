@@ -56,17 +56,23 @@ module.exports.Login = async (req, res) => {
             const validPassword = await bcrypt.compare(Password, findUser.Password);
             if (validPassword) {
                 const generatedToken = createSecretToken(findUser._id);
+                // res.cookie("token", generatedToken, {
+                //     withCredentials: true,
+                //     httpOnly: false, // Prevents access to the cookie from JavaScript on the frontend
+                //     //secure: process.env.NODE_ENV === "production", // Ensures the cookie is only sent over HTTPS in production
+                //     secure: True, // Ensures the cookie is only sent over HTTPS in production
+                //     sameSite: none, // Ensures the cookie is sent only to the same site
+                //     // sameSite: "strict",
+                //     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+
+                // });
                 res.cookie("token", generatedToken, {
                     withCredentials: true,
-                    httpOnly: false, // Prevents access to the cookie from JavaScript on the frontend
-                    //secure: process.env.NODE_ENV === "production", // Ensures the cookie is only sent over HTTPS in production
-                    secure: True, // Ensures the cookie is only sent over HTTPS in production
-                    sameSite: none, // Ensures the cookie is sent only to the same site
-                    // sameSite: "strict",
-
+                    httpOnly: true, // Prevents access to the cookie from JavaScript on the frontend
+                    secure: true, // Ensures the cookie is only sent over HTTPS
+                    sameSite: "none", // Allows cross-site requests
                     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-
-                });
+                  });
                 res.status(201).json({ "message": "success" })
             } else {
                 res.json({ "message": "unsuccessful" });

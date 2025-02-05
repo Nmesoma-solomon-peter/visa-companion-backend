@@ -1,11 +1,19 @@
 const Express = require('express');
 const app = Express();
 const cors = require("cors"); //for successfull connection to frontend
+// app.use(cors({
+//     origin:["https://visa-companion-frontend.onrender.com/"], 
+//     credentials: true, // Allows cookies to be sent
+//     // methods:["GET","POST","PUT","DELETE"],
+// }));
+
 app.use(cors({
-    origin:["https://visa-companion-frontend.onrender.com/"], 
+    origin: ["https://visa-companion-frontend.onrender.com"],
     credentials: true, // Allows cookies to be sent
-    // methods:["GET","POST","PUT","DELETE"],
-}));
+    methods: ["GET", "POST", "PUT", "DELETE"], // Explicitly allow these methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Explicitly allow these headers
+  }));
+
 app.use(Express.json())
 
 const mongoose = require('mongoose');
